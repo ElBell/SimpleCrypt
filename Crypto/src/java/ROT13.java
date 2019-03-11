@@ -1,13 +1,15 @@
+package java;
+
 import static java.lang.Character.isLowerCase;
 import static java.lang.Character.isUpperCase;
 import static java.lang.Character.toLowerCase;
 
 public class ROT13  {
 
-    ROT13(Character cs, Character cf) {
+    public ROT13(Character cs, Character cf) {
     }
 
-    ROT13() {
+    public ROT13() {
     }
 
 

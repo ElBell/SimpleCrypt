@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.ROT13;
+
 import static org.junit.Assert.*;
 
 public class ROT13Test {
