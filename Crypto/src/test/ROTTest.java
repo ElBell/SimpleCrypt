@@ -1,11 +1,13 @@
+
+
 import main.java.ROT;
 import main.java.ROT13;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-public class ROT13Test {
+public class ROTTest {
 
     @Test
     public void rotateStringTest0() {
@@ -14,7 +16,7 @@ public class ROT13Test {
         String s2 = "ABCDEF";
 
         // When
-        ROT cipher = new ROT13();
+        ROT cipher = new ROT('a', 'b');
         String actual = cipher.rotate(s1, 'A');
 
         // Then
@@ -28,7 +30,7 @@ public class ROT13Test {
         String s2 = "DEFABC";
 
         // When
-        ROT cipher = new ROT13();
+        ROT cipher = new ROT('a', 'r');
         String actual = cipher.rotate(s1, 'D');
 
         // Then
@@ -42,7 +44,7 @@ public class ROT13Test {
         String s2 = "NOPQRSTUVWXYZABCDEFGHIJKLM";
 
         // When
-        ROT cipher = new ROT13();
+        ROT cipher = new ROT('a', 'h');
         String actual = cipher.rotate(s1, 'N');
         System.out.println(s1);
         System.out.println(actual);
@@ -53,41 +55,35 @@ public class ROT13Test {
     @Test
     public void cryptTest1() {
         // Given
-        ROT cipher = new ROT('a', 'n');
+        ROT cipher = new ROT('a', 't');
 
         String Q1 = "Why did the chicken cross the road?";
-        String A1 = "Jul qvq gur puvpxra pebff gur ebnq?";
+        String A1 = "Par wbw max vabvdxg vkhll max khtw?";
 
-        String Q2 = "Gb trg gb gur bgure fvqr!";
+        String Q2 = "Mh zxm mh max hmaxk lbwx!";
         String A2 = "To get to the other side!";
 
         // When
         String actual = cipher.encrypt(Q1);
-        System.out.println(Q1);
-        System.out.println(A1);
-
         // Then
         Assert.assertEquals(A1, actual);
-
         // When
         String actual2 = cipher.decrypt(Q2);
-        System.out.println(Q2);
-        System.out.println(A2);
         // Then
-        Assert.assertEquals(A2, actual2);
+        assertEquals(A2, actual2);
     }
+
     @Test
-    public void cryptTwiceTest() {
+    public void cryptTwiceTestWithShiftNot13() {
         // Given
-        ROT13 cipher = new ROT13();
+        ROT cipher = new ROT('a', 'k');
 
         String Q1 = "Why did the chicken cross the road?";
-        System.out.println(Q1);
 
         // When
-        String actual = cipher.crypt(cipher.crypt(Q1));
-        System.out.println(actual);
+        String actual = cipher.crypt(cipher.crypt(Q1, true), true);
         // Then
-        assertEquals(Q1, actual);
+        assertNotEquals(Q1, actual);
     }
+
 }

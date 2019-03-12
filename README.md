@@ -30,7 +30,7 @@ Applying ROT13 to a piece of text merely requires examining its alphabetic chara
 ```Java
 String s = "we hold these truths to be self evident";
 
-//WHEN you create a ROT13 with 'a' and 'n' THEN 
+ROT
 
 if (crypt(crypt(s)) == s) {
   return true;
